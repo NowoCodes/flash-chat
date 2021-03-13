@@ -25,20 +25,18 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     animation = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
     animationTween =
-        ColorTween(begin: Colors.red, end: Colors.blue).animate(controller);
+        ColorTween(begin: Colors.blueGrey, end: Colors.white).animate(controller);
 
     controller.forward();
 
     controller.addListener(() {
       setState(() {});
-      print(animationTween.value);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white.withOpacity(controller.value),
       backgroundColor: animationTween.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
