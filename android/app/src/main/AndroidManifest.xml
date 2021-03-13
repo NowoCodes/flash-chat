@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flashchat">
+    package="com.examnowocodesple.flashchat">
    <application
-        android:label="flashchat"
+        android:label="Flash Chat"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
