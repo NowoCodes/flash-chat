@@ -13,7 +13,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   // Use SingleTickerProviderStateMixin  if you want to use only 1 Animation
   // Use TickerProviderStateMixin  if you want to use multiple Animation
   AnimationController controller;
-  Animation animation;
+  Animation animation, animationTween;
 
   @override
   void initState() {
@@ -24,28 +24,22 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
 
     animation = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
+    animationTween =
+        ColorTween(begin: Colors.red, end: Colors.blue).animate(controller);
 
     controller.forward();
 
-    animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        controller.reverse(from: 1.0);
-      } else if (status == AnimationStatus.dismissed) {
-        controller.forward();
-      }
-    });
-
     controller.addListener(() {
       setState(() {});
-      print(animation.value);
+      print(animationTween.value);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white.withOpacity(controller.value),
-      // backgroundColor: Colors.white,
+      // backgroundColor: Colors.white.withOpacity(controller.value),
+      backgroundColor: animationTween.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -58,7 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   tag: 'logo',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: animation.value * 65,
+                    height: animation.value * 60,
                   ),
                 ),
                 Text(
