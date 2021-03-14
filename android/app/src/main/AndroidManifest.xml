@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.examnowocodesple.flashchat">
+    package="com.nowocodes.flashchat">
    <application
         android:label="Flash Chat"
         android:icon="@mipmap/ic_launcher">
