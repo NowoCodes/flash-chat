@@ -38,60 +38,67 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: animationTween.value,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Row(
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Hero(
-                  tag: 'logo',
-                  child: Container(
-                    child: Image.asset('images/logo.png'),
-                    height: animation.value * 60,
-                  ),
-                ),
-                Text(
-                  'Flash Chat',
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
+                Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: Hero(
+                        tag: 'logo',
+                        child: Container(
+                          child: Image.asset('images/logo.png'),
+                          height: animation.value * 60,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Flash Chat',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 45.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
 
-                // Commnted because of speed
-                // TypewriterAnimatedTextKit(
-                //   speed: Duration(milliseconds: 300),
-                //   text: ['Flash Chat'],
-                //   textStyle: TextStyle(
-                //     color: Colors.black54,
-                //     fontSize: 45.0,
-                //     fontWeight: FontWeight.w900,
-                //   ),
-                // ),
+                    // Commnted because of speed
+                    // TypewriterAnimatedTextKit(
+                    //   speed: Duration(milliseconds: 300),
+                    //   text: ['Flash Chat'],
+                    //   textStyle: TextStyle(
+                    //     color: Colors.black54,
+                    //     fontSize: 45.0,
+                    //     fontWeight: FontWeight.w900,
+                    //   ),
+                    // ),
+                  ],
+                ),
+                SizedBox(
+                  height: 48.0,
+                ),
+                RoundedButton(
+                  color: Colors.lightBlueAccent,
+                  btnTitle: 'Log In',
+                  onPressed: () {
+                    Navigator.pushNamed(context, LoginScreen.id);
+                  },
+                ),
+                RoundedButton(
+                  color: Colors.blueAccent,
+                  btnTitle: 'Register',
+                  onPressed: () {
+                    Navigator.pushNamed(context, RegistrationScreen.id);
+                  },
+                ),
               ],
             ),
-            SizedBox(
-              height: 48.0,
-            ),
-            RoundedButton(
-              color: Colors.lightBlueAccent,
-              btnTitle: 'Log In',
-              onPressed: () {
-                Navigator.pushNamed(context, LoginScreen.id);
-              },
-            ),
-            RoundedButton(
-              color: Colors.blueAccent,
-              btnTitle: 'Register',
-              onPressed: () {
-                Navigator.pushNamed(context, RegistrationScreen.id);
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );
