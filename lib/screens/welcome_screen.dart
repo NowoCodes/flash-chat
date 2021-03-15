@@ -12,10 +12,8 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
-  // Use SingleTickerProviderStateMixin  if you want to use only 1 Animation
-  // Use TickerProviderStateMixin  if you want to use multiple Animation
   AnimationController controller;
-  Animation animation, animationTween;
+  Animation animationTween;
 
   @override
   void initState() {
@@ -25,7 +23,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       vsync: this,
     );
 
-    animation = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
     animationTween = ColorTween(begin: Colors.blueGrey, end: Colors.white)
         .animate(controller);
     controller.forward();
@@ -54,29 +51,29 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         tag: 'logo',
                         child: Container(
                           child: Image.asset('images/logo.png'),
-                          height: animation.value * 60,
+                          height: 60.0,
                         ),
                       ),
                     ),
-                    Text(
-                      'Flash Chat',
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 45.0,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-
-                    // Commnted because of speed
-                    // TypewriterAnimatedTextKit(
-                    //   speed: Duration(milliseconds: 300),
-                    //   text: ['Flash Chat'],
-                    //   textStyle: TextStyle(
+                    // Text(
+                    //   'Flash Chat',
+                    //   style: TextStyle(
                     //     color: Colors.black54,
                     //     fontSize: 45.0,
                     //     fontWeight: FontWeight.w900,
                     //   ),
                     // ),
+
+                    // Commnted because of speed
+                    TypewriterAnimatedTextKit(
+                      speed: Duration(milliseconds: 300),
+                      text: ['Flash Chat'],
+                      textStyle: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 45.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
