@@ -157,23 +157,15 @@ class MessageBubble extends StatelessWidget {
             ),
           ),
           Material(
-            borderRadius: isMe ? BorderRadius.only(
-              topLeft: Radius.circular(30.0),
-              bottomLeft: Radius.circular(30.0),
-              bottomRight: Radius.circular(30.0),
-            ) : BorderRadius.only(
-              topRight: Radius.circular(30.0),
-              bottomLeft: Radius.circular(30.0),
-              bottomRight: Radius.circular(30.0),
-            ),
-            color: isMe ? Colors.lightBlueAccent : Colors.amber,
+            borderRadius: isMe ? kCurrentUserBorderRadius : kOtherUserBorderRadius,
+            color: isMe ? kCurrentUserBubbleColor : kOtherUserBubbleColor,
             elevation: 5.0,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Text(
                 text,
                 style: TextStyle(
-                  color: isMe ? Colors.white : Colors.black54,
+                  color: isMe ? kCurrentUserBubbleTextColor : kOtherUserBubbleTextColor,
                   fontSize: 15.0,
                 ),
               ),
