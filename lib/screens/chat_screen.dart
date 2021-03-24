@@ -64,6 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      textCapitalization: TextCapitalization.sentences,
                       controller: messageTextController,
                       onChanged: (value) {
                         messageText = value;
@@ -112,7 +113,7 @@ class MessagesStream extends StatelessWidget {
           );
         }
 
-        final messages = snapshot.data.docs;
+        final messages = snapshot.data.docs.reversed;
         List<MessageBubble> messageBubbles = [];
         for (var message in messages) {
           final messageText = message.data()['text'];
@@ -157,7 +158,7 @@ class MessageBubble extends StatelessWidget {
             isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           Text(
-            '$sender ${DateTime.fromMillisecondsSinceEpoch(time.seconds * 1000)}',
+            '$sender',
             style: TextStyle(
               fontSize: 12.0,
               color: Colors.black54,
